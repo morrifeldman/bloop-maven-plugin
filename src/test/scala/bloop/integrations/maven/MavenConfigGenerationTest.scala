@@ -67,6 +67,13 @@ class MavenConfigGenerationTest extends BaseConfigSuite {
   }
 
   @Test
+  def launcher() = {
+    check("launcher/pom.xml") { (configFile, projectName, subprojects) =>
+      assert(configFile.project.`scala`.isDefined)
+    }
+  }
+
+  @Test
   def multiProject() = {
     check(
       "multi_scala/pom.xml",
